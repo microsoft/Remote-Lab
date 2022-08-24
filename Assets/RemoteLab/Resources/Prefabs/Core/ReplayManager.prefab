@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3298962936735376314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3298962936735376312}
+  - component: {fileID: 3298962936735376315}
+  - component: {fileID: 2980823651160038935}
+  - component: {fileID: 4157738157335029263}
+  - component: {fileID: 5810364155582060089}
+  m_Layer: 0
+  m_Name: ReplayManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3298962936735376312
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298962936735376314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.4743233, y: -3.922086, z: -16.340302}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3298962936735376315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298962936735376314}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625ec0acfcdf8e14f9c88cf8a580ef4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformDataFilePrefix: transform
+  controllerDataFilePrefix: controller
+  UIEventDataFilePrefix: ui_event
+  customVariableDataFilePrefix: custom_variables
+  sessionId: session_1
+  participantId: participant_1
+  startStopRecording: 0
+  recording: 0
+  recordOBS: 0
+  frameRate: 60
+  trackables: []
+  interactableUIs: []
+--- !u!114 &2980823651160038935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298962936735376314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1da8eb5aa68bb56439e0ba650ed6f579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obsPath: D:\Programs\obs-studio\bin\64bit\
+  url: localhost:4444
+  password: 
+  waitForOBSDelay: 3
+  retryLimit: 5
+--- !u!114 &4157738157335029263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298962936735376314}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c65d192ed3bb344a8aef21b050819e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transformDataPath: 
+  uiDataPath: 
+  transformDataFilePrefix: transform
+  uiDataFilePrefix: ui_event
+  frameRate: 60
+  videoPlayer: {fileID: 0}
+--- !u!114 &5810364155582060089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3298962936735376314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c577d1f00be70b46b32113b141a8084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  replayUI: {fileID: 3113571465176059143, guid: 76d06d24fa8f87041a44c57abb4c5eb8, type: 3}

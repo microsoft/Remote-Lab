@@ -1,0 +1,64 @@
+FrameCount,UI Type,New Value,Hierarchy,ID
+1130,toggle,False,/Net SingleAnswerChoicePrefab(Clone),167a18e0-04ad-4be6-8b5e-22e62cceca0f
+1130,toggle,False,/Net SingleAnswerChoicePrefab(Clone),e23a8946-3fa6-45a1-a2e0-4c54ebc68e05
+1130,toggle,False,/Net SingleAnswerChoicePrefab(Clone),dc6af434-7114-472e-8dbd-e08a752a0515
+1130,toggle,False,/Net SingleAnswerChoicePrefab(Clone),a28f7d86-60e5-486c-b108-bb1f26b0b74e
+1130,toggle,False,/Net SingleAnswerChoicePrefab(Clone),0696c8f6-ace6-4fb6-b41d-fbd49294bd64
+1130,toggle,False,/Net MultipleAnswersChoicePrefab(Clone),4d58cbad-7592-4b54-a931-1da1be4936b3
+1130,toggle,False,/Net MultipleAnswersChoicePrefab(Clone),29986a62-adf6-432d-aa8f-46d09a41179a
+1130,toggle,False,/Net MultipleAnswersChoicePrefab(Clone),c52ce4d8-ecb6-4f9f-979b-a0db41ae0d19
+1130,toggle,False,/Net MultipleAnswersChoicePrefab(Clone),c27cd0d3-2129-4418-9b51-313aaae83a6a
+1130,toggle,False,/Net MultipleAnswersChoicePrefab(Clone),db718966-d40f-4422-b750-b339f7f545fb
+1130,toggle,False,/Likert(Clone)/Q2/ChoicesParent/1,4d58cbad-7592-4b54-a931-1da1be4936b3
+1130,toggle,False,/Likert(Clone)/Q2/ChoicesParent/2,29986a62-adf6-432d-aa8f-46d09a41179a
+1130,toggle,False,/Likert(Clone)/Q2/ChoicesParent/3,c52ce4d8-ecb6-4f9f-979b-a0db41ae0d19
+1130,toggle,False,/Likert(Clone)/Q2/ChoicesParent/4,c27cd0d3-2129-4418-9b51-313aaae83a6a
+1130,toggle,False,/Likert(Clone)/Q2/ChoicesParent/5,db718966-d40f-4422-b750-b339f7f545fb
+1130,slider,0,/Net SliderTemplate(Clone)/Slider,fd7956ba-f3bc-4e32-95c5-43e8f4ba1bf4
+1130,slider,0,/Likert(Clone)/Q3/Slider,fd7956ba-f3bc-4e32-95c5-43e8f4ba1bf4
+1250,toggle,False,/Likert(Clone)/Q1/ChoicesParent/1,167a18e0-04ad-4be6-8b5e-22e62cceca0f
+1250,toggle,False,/Likert(Clone)/Q1/ChoicesParent/2,e23a8946-3fa6-45a1-a2e0-4c54ebc68e05
+1250,toggle,False,/Likert(Clone)/Q1/ChoicesParent/3,dc6af434-7114-472e-8dbd-e08a752a0515
+1250,toggle,False,/Likert(Clone)/Q1/ChoicesParent/4,a28f7d86-60e5-486c-b108-bb1f26b0b74e
+1250,toggle,False,/Likert(Clone)/Q1/ChoicesParent/5,0696c8f6-ace6-4fb6-b41d-fbd49294bd64
+1375,toggle,True,/Likert(Clone)/Q1/ChoicesParent/3,dc6af434-7114-472e-8dbd-e08a752a0515
+1410,toggle,False,/Likert(Clone)/Q1/ChoicesParent/1,167a18e0-04ad-4be6-8b5e-22e62cceca0f
+1410,toggle,False,/Likert(Clone)/Q1/ChoicesParent/2,e23a8946-3fa6-45a1-a2e0-4c54ebc68e05
+1410,toggle,True,/Likert(Clone)/Q1/ChoicesParent/3,dc6af434-7114-472e-8dbd-e08a752a0515
+1410,toggle,False,/Likert(Clone)/Q1/ChoicesParent/4,a28f7d86-60e5-486c-b108-bb1f26b0b74e
+1410,toggle,False,/Likert(Clone)/Q1/ChoicesParent/5,0696c8f6-ace6-4fb6-b41d-fbd49294bd64
+1410,toggle,False,/Likert(Clone)/Q2/ChoicesParent/1,4d58cbad-7592-4b54-a931-1da1be4936b3
+1410,toggle,False,/Likert(Clone)/Q2/ChoicesParent/2,29986a62-adf6-432d-aa8f-46d09a41179a
+1410,toggle,False,/Likert(Clone)/Q2/ChoicesParent/3,c52ce4d8-ecb6-4f9f-979b-a0db41ae0d19
+1410,toggle,False,/Likert(Clone)/Q2/ChoicesParent/4,c27cd0d3-2129-4418-9b51-313aaae83a6a
+1410,toggle,False,/Likert(Clone)/Q2/ChoicesParent/5,db718966-d40f-4422-b750-b339f7f545fb
+1410,button,click,/Likert(Clone)/NextButton,54b4efe1-7022-4460-8f27-85b095a3931f
+1410,button,click,/Likert(Clone)/NextButton,54b4efe1-7022-4460-8f27-85b095a3931f
+1463,toggle,True,/Likert(Clone)/Q2/ChoicesParent/4,c27cd0d3-2129-4418-9b51-313aaae83a6a
+1499,toggle,True,/Likert(Clone)/Q2/ChoicesParent/3,c52ce4d8-ecb6-4f9f-979b-a0db41ae0d19
+1500,toggle,False,/Likert(Clone)/Q2/ChoicesParent/5,db718966-d40f-4422-b750-b339f7f545fb
+1500,toggle,True,/Likert(Clone)/Q2/ChoicesParent/4,c27cd0d3-2129-4418-9b51-313aaae83a6a
+1500,toggle,True,/Likert(Clone)/Q2/ChoicesParent/3,c52ce4d8-ecb6-4f9f-979b-a0db41ae0d19
+1500,toggle,False,/Likert(Clone)/Q2/ChoicesParent/2,29986a62-adf6-432d-aa8f-46d09a41179a
+1500,toggle,False,/Likert(Clone)/Q2/ChoicesParent/1,4d58cbad-7592-4b54-a931-1da1be4936b3
+1541,toggle,False,/Likert(Clone)/Q2/ChoicesParent/1,4d58cbad-7592-4b54-a931-1da1be4936b3
+1541,toggle,False,/Likert(Clone)/Q2/ChoicesParent/2,29986a62-adf6-432d-aa8f-46d09a41179a
+1541,toggle,True,/Likert(Clone)/Q2/ChoicesParent/3,c52ce4d8-ecb6-4f9f-979b-a0db41ae0d19
+1541,toggle,True,/Likert(Clone)/Q2/ChoicesParent/4,c27cd0d3-2129-4418-9b51-313aaae83a6a
+1541,toggle,False,/Likert(Clone)/Q2/ChoicesParent/5,db718966-d40f-4422-b750-b339f7f545fb
+1541,slider,0,/Likert(Clone)/Q3/Slider,fd7956ba-f3bc-4e32-95c5-43e8f4ba1bf4
+1541,button,click,/Likert(Clone)/NextButton,54b4efe1-7022-4460-8f27-85b095a3931f
+1620,slider,52,/Likert(Clone)/Q3/Slider,fd7956ba-f3bc-4e32-95c5-43e8f4ba1bf4
+1676,button,click,/Likert(Clone)/NextButton,54b4efe1-7022-4460-8f27-85b095a3931f
+1687,slider,52,/Likert(Clone)/Q3/Slider,fd7956ba-f3bc-4e32-95c5-43e8f4ba1bf4
+1687,toggle,False,/Likert(Clone)/Q1/ChoicesParent/1,167a18e0-04ad-4be6-8b5e-22e62cceca0f
+1687,toggle,False,/Likert(Clone)/Q1/ChoicesParent/2,e23a8946-3fa6-45a1-a2e0-4c54ebc68e05
+1687,toggle,True,/Likert(Clone)/Q1/ChoicesParent/3,dc6af434-7114-472e-8dbd-e08a752a0515
+1687,toggle,False,/Likert(Clone)/Q1/ChoicesParent/4,a28f7d86-60e5-486c-b108-bb1f26b0b74e
+1687,toggle,False,/Likert(Clone)/Q1/ChoicesParent/5,0696c8f6-ace6-4fb6-b41d-fbd49294bd64
+1687,toggle,False,/Likert(Clone)/Q2/ChoicesParent/1,4d58cbad-7592-4b54-a931-1da1be4936b3
+1687,toggle,False,/Likert(Clone)/Q2/ChoicesParent/2,29986a62-adf6-432d-aa8f-46d09a41179a
+1687,toggle,True,/Likert(Clone)/Q2/ChoicesParent/3,c52ce4d8-ecb6-4f9f-979b-a0db41ae0d19
+1687,toggle,True,/Likert(Clone)/Q2/ChoicesParent/4,c27cd0d3-2129-4418-9b51-313aaae83a6a
+1687,toggle,False,/Likert(Clone)/Q2/ChoicesParent/5,db718966-d40f-4422-b750-b339f7f545fb
+1687,slider,52,/Likert(Clone)/Q3/Slider,fd7956ba-f3bc-4e32-95c5-43e8f4ba1bf4

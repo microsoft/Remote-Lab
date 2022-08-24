@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+message Record {
+	repeated Step Record = 1;
+}
+
+message Step {
+
+	enum StatusEnum {
+		Instantiated = 0;
+		Changed = 1;
+		Destroyed = 2;
+		Activated = 3;
+		Deactivated = 4;
+		IFrame_Active = 5;
+        IFrame_Inactive = 6;
+	}
+
+	int32 FrameCount = 1;
+	string GameObject = 2;
+	StatusEnum Status = 3;
+	float PositionX = 4;
+	float PositionY = 5;
+	float PositionZ = 6;
+	float RotationX = 7;
+	float RotationY = 8;
+	float RotationZ = 9;
+	float ScaleX = 10;
+	float ScaleY = 11;
+	float ScaleZ = 12;
+	string Resource = 13;
+	string ID = 14;
+	string Hierarchy = 15;
+}
+
+message UiRecord {
+	repeated UiStep UiRecord = 1;
+}
+
+message UiStep {
+	enum TypeEnum {
+		Button = 0;
+		Toggle = 1;
+		Slider = 2;
+	}
+
+	int32 FrameCount = 1;
+	TypeEnum Type = 2;
+	string NewValue = 3;
+	string Hierarchy = 4;
+	string ID = 5;
+}

@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec13901d0b62ef4a83c0e01625355a4, type: 3}
+  m_Name: Likert
+  m_EditorClassIdentifier: 
+  questionnaireQuestions:
+  - question: A
+    choicesType: 1
+    choiceLabels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    minScore: 0
+    maxScore: 0
+    wholeNumber: 0
+    labelForMinScore: Test
+    labelForMaxScore: Test2
+    canSkipQuestion: 0
+  - question: B
+    choicesType: 2
+    choiceLabels:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    minScore: 0
+    maxScore: 0
+    wholeNumber: 0
+    labelForMinScore: Test
+    labelForMaxScore: Test2
+    canSkipQuestion: 0
+  - question: C
+    choicesType: 3
+    choiceLabels: []
+    minScore: 0
+    maxScore: 100
+    wholeNumber: 1
+    labelForMinScore: Low
+    labelForMaxScore: High
+    canSkipQuestion: 0
