@@ -1,4 +1,4 @@
-# Remote Lab Toolkit
+# Remote Lab Toolkit (Beta)
 
 ## TODO: Change README.md for new Survey System, Video Player
 
@@ -19,7 +19,7 @@
 
 
 ## About <a name="about"></a>
-The XR Remote study toolkit is a toolkit for Unity that allows users to record and replay gameplay from the Unity editor window. The toolkit currently allows users to track the changes in Transform for each GameObject in the scene, record UI events (Toggle, Button, and Slider events), note changes in user-defined variables, and implement custom Likert scale surveys and the raw NASA-TLX survey. 
+The XR Remote study toolkit is a toolkit for Unity that allows users to record and replay gameplay from the Unity editor window. The toolkit currently allows users to track the changes in Transform for each GameObject in the scene, record UI events (Toggle, Button, and Slider events), note changes in user-defined variables, and implement custom Likert scale surveys and the raw NASA-TLX survey. The toolkit was developed as a part of a research project and it is served as is, to the benefitr of the research comunity. 
 
 ## Installation <a name="installation"></a>
 Download the latest Unity package from the Releases section. Then, import the package into Unity by selecting `Assets > Import Package > Custom Package` from the Unity menu bar. The package contents will be imported into a folder called Replay System in the Unity Assets folder for your project.
