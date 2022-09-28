@@ -291,7 +291,7 @@ This scene contains the converted version of the `[NET] SampleExperiment` scene.
 ## Contributors
 ### TODO: Add more info here, photos, links, contributions
 
-Jaewook Lee - University of Illinois at Urbana-Champaign
+Jaewook Lee - University of Washington
 
 Raahul Natarajan - Vanderbilt University
 
