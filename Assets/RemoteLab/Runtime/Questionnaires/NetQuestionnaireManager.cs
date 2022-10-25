@@ -11,7 +11,7 @@ namespace RemoteLab
     public class NetQuestionnaireManager : MonoBehaviourPunCallbacks
     {
         [Header("Questionnaire Content")]
-        [SerializeField] QuestionnaireContent questionnaireContent;
+        public QuestionnaireContent questionnaireContent;
 
         [Header("Default Buttons")]
         [SerializeField] GameObject prevButton;
@@ -621,7 +621,7 @@ namespace RemoteLab
                 yield return new WaitForSeconds(0.05f);
             }
 
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
 
         private void WriteQuestionnaireDataEntry(string location, string question, string user_val)

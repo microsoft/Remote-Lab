@@ -12,4 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ec13901d0b62ef4a83c0e01625355a4, type: 3}
   m_Name: NASA_TLX
   m_EditorClassIdentifier: 
-  questionnaireQuestions: []
+  questionnaireQuestions:
+  - question: How mentally demanding was the task?
+    choicesType: 3
+    choiceLabels: []
+    minScore: 0
+    maxScore: 100
+    wholeNumber: 1
+    labelForMinScore: Very Low
+    labelForMaxScore: Very High
+    canSkipQuestion: 0
+  - question: How physically demanding was the task?
+    choicesType: 3
+    choiceLabels: []
+    minScore: 0
+    maxScore: 100
+    wholeNumber: 1
+    labelForMinScore: Very Low
+    labelForMaxScore: Very High
+    canSkipQuestion: 0
+  - question: How hurried or rushed was the pace of the task?
+    choicesType: 3
+    choiceLabels: []
+    minScore: 0
+    maxScore: 100
+    wholeNumber: 1
+    labelForMinScore: Very Low
+    labelForMaxScore: Very High
+    canSkipQuestion: 0
+  - question: How successful were you in accomplishing what you were asked to do?
+    choicesType: 3
+    choiceLabels: []
+    minScore: 0
+    maxScore: 100
+    wholeNumber: 1
+    labelForMinScore: Perfect
+    labelForMaxScore: Failure
+    canSkipQuestion: 0
+  - question: How hard did you have to work to accomplish your level of performance?
+    choicesType: 3
+    choiceLabels: []
+    minScore: 0
+    maxScore: 100
+    wholeNumber: 1
+    labelForMinScore: Very Low
+    labelForMaxScore: Very High
+    canSkipQuestion: 0
+  - question: How insecure, discouraged, irritated, stressed, and annoyed were you?
+    choicesType: 3
+    choiceLabels: []
+    minScore: 0
+    maxScore: 100
+    wholeNumber: 1
+    labelForMinScore: Very Low
+    labelForMaxScore: Very High
+    canSkipQuestion: 0

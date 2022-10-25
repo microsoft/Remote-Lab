@@ -43,13 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e4cb65f3992fc43bab1acb7ac722b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionnaires:
+  questionnairesToSpawn:
   - name: Likert
-    location: {x: 0, y: 1.4, z: -3}
-    rotation: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 1.4, z: -3}
+    rotation: {x: 0, y: 180, z: 0}
   - name: SUS
-    location: {x: 0, y: 1.4, z: -3}
-    rotation: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 1.4, z: -3}
+    rotation: {x: 0, y: 180, z: 0}
   - name: NASA_TLX
-    location: {x: 0, y: 1.4, z: -3}
-    rotation: {x: 0, y: 0, z: 0}
+    position: {x: 0, y: 1.4, z: -3}
+    rotation: {x: 0, y: 180, z: 0}

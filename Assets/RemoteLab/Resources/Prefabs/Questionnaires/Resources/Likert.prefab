@@ -369,7 +369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.3999939}
+  m_AnchoredPosition: {x: 0, y: 1.4}
   m_SizeDelta: {x: 1.6, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3814613184463668134
@@ -517,7 +517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInstantiatedAtRuntime: 1
   resourceName: Likert_Local
-  guidString: 
+  guidString: 949449a6-1e43-4c2f-806a-150cbd616d77
   loggedStart: 0
   registeredToManager: 0
 --- !u!1 &3814613184772200582

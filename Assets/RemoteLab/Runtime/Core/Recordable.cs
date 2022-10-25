@@ -53,7 +53,7 @@ namespace RemoteLab
 
             if (!registeredToManager)
             {
-                ReplayManager.Instance.trackables.Add(this);
+                ReplayManager.Instance.recordables.Add(this);
                 registeredToManager = true;
             }
 
@@ -80,11 +80,11 @@ namespace RemoteLab
             if (ReplayManager.Instance == null)
                 return;
 
-            // Create final entry for trackable (Destroyed)
+            // Create final entry for recordable (Destroyed)
             if (!applicationQuit)
             {
                 ReplayManager.Instance.WriteTransformDataEntry(transform, ReplayManager.ObjectStatus.Destroyed, guidString, resourceName);
-                ReplayManager.Instance.trackables.Remove(this);
+                ReplayManager.Instance.recordables.Remove(this);
             }
         }
 
@@ -95,7 +95,7 @@ namespace RemoteLab
 
             applicationQuit = true;
             ReplayManager.Instance.WriteTransformDataEntry(transform, ReplayManager.ObjectStatus.Destroyed, guidString, resourceName);
-            ReplayManager.Instance.trackables.Remove(this);
+            ReplayManager.Instance.recordables.Remove(this);
         }
 
         public bool IsInstanced()

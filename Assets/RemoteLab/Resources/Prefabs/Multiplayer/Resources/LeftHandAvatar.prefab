@@ -908,7 +908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInstantiatedAtRuntime: 1
   resourceName: LocalLeftHandAvatar
-  guidString: 
+  guidString: eb7f4663-ed1f-4aa9-ac69-0bd740a15e2b
   loggedStart: 0
   registeredToManager: 0
 --- !u!1 &7915718429924694201

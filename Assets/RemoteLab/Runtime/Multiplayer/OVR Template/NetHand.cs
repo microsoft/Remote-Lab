@@ -192,6 +192,10 @@ public class NetHand : MonoBehaviour
     {
         bool grabbing = m_grabber.grabbedObject != null;
         HandPose grabPose = m_defaultGrabPose;
+
+        if (grabPose == null) 
+            return;
+
         if (grabbing)
         {
             HandPose customPose = m_grabber.grabbedObject.GetComponent<HandPose>();

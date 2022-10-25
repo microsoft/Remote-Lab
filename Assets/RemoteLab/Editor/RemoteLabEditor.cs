@@ -36,10 +36,13 @@ namespace RemoteLab.Editor
         private static bool _isReplayScene;
         private static List<Recordable> _sceneRecordables;
         private static List<NetVRPlayer> _scenePlayers;
+        private static bool _questionnaireShown = false;
 
         private static bool _doFirstRun = true;
         private static bool _showedFirstRun = false;
         private static bool _toggleObs = false;
+
+        private string questionnaireName = "";
 
         public RemoteLabEditor()
         {
@@ -343,7 +346,7 @@ namespace RemoteLab.Editor
             }
             else
             {
-                foreach (Recordable rec in ReplayManager.Instance.trackables)
+                foreach (Recordable rec in ReplayManager.Instance.recordables)
                 {
                     EditorGUILayout.ObjectField(rec, typeof(Recordable), true);
                 }
@@ -357,7 +360,7 @@ namespace RemoteLab.Editor
 
             if (!EditorApplication.isPlaying || NetworkManager.Instance == null)
             {
-                GUILayout.Label("Start the experiment to track networked players.");
+                GUILayout.Label("Start the experiment to record networked players.");
                 return;
             }
 
@@ -483,16 +486,49 @@ namespace RemoteLab.Editor
             GUILayout.Label("Add Questionnaire", new GUIStyle("Label") { wordWrap = true, fontSize = 16 });
             EditorGUILayout.Separator();
 
-            GUILayoutOption buttonStyle = GUILayout.Width(135);
+            questionnaireName = EditorGUILayout.TextField("Questionnaire Name: ", questionnaireName);
 
             if (GUILayout.Button("New Questionnaire", EditorStyles.miniButton))
             {
-                QuestionnaireContent q = CreateInstance<QuestionnaireContent>();
-                EditorUtility.FocusProjectWindow();
-                ProjectWindowUtil.CreateAsset(q, "Assets/RemoteLab/Questionnaire.asset");
-                // TODO: figure out if it's possible to undo this
+                if (!questionnaireName.Equals(""))
+                {
+                    QuestionnaireContent questionnaireContent = AssetDatabase.LoadAssetAtPath<QuestionnaireContent>("Assets/RemoteLab/Resources/Prefabs/Questionnaires/Examples/" + questionnaireName + ".asset");
+                    UnityEngine.Object netQuestionnairePrefab = AssetDatabase.LoadAssetAtPath("Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/" + questionnaireName + ".prefab", typeof(UnityEngine.Object));
+                    UnityEngine.Object localQuestionnairePrefab = AssetDatabase.LoadAssetAtPath("Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/" + questionnaireName + "_Local.prefab", typeof(UnityEngine.Object));
+
+                    if (questionnaireContent == null && netQuestionnairePrefab == null && localQuestionnairePrefab == null)
+                    {
+                        questionnaireContent = ScriptableObject.CreateInstance<QuestionnaireContent>();
+                        AssetDatabase.CreateAsset(questionnaireContent, "Assets/RemoteLab/Resources/Prefabs/Questionnaires/Examples/" + questionnaireName + ".asset");
+                        AssetDatabase.SaveAssets();
+
+                        AssetDatabase.CopyAsset("Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/NetQuestionnaire.prefab", "Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/" + questionnaireName + ".prefab");
+                        AssetDatabase.CopyAsset("Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/NetQuestionnaire_Local.prefab", "Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/" + questionnaireName + "_Local.prefab");
+                        EditorUtility.FocusProjectWindow();
+
+                        GameObject netQuestionnaireObj = (GameObject) AssetDatabase.LoadAssetAtPath("Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/" + questionnaireName + ".prefab", typeof(UnityEngine.Object));
+                        GameObject localQuestionnaireObj = (GameObject) AssetDatabase.LoadAssetAtPath("Assets/RemoteLab/Resources/Prefabs/Questionnaires/Resources/" + questionnaireName + "_Local.prefab", typeof(UnityEngine.Object));
+
+                        netQuestionnaireObj.GetComponent<NetQuestionnaireManager>().questionnaireContent = questionnaireContent;
+                        netQuestionnaireObj.GetComponent<QuestionnaireManager>().questionnaireContent = questionnaireContent;
+                        localQuestionnaireObj.GetComponent<NetQuestionnaireManager>().questionnaireContent = questionnaireContent;
+                        localQuestionnaireObj.GetComponent<QuestionnaireManager>().questionnaireContent = questionnaireContent;
+
+                        netQuestionnaireObj.GetComponent<Recordable>().isInstantiatedAtRuntime = false;
+                        localQuestionnaireObj.GetComponent<Recordable>().isInstantiatedAtRuntime = true;
+                        localQuestionnaireObj.GetComponent<Recordable>().resourceName = localQuestionnaireObj.name;
+
+
+                        GameObject questionnaireManager = GameObject.Find("QuestionnaireManager");
+                        if (questionnaireManager != null)
+                        {
+                            questionnaireManager.GetComponent<SpawnQuestionnaires>().questionnairesToSpawn.Add(new QuestionnaireInformation(questionnaireName, new Vector3(0f, 0f, 0f), new Vector3(0f, 0f, 0f)));
+                        }
+                    }
+                }
             }
 
+            GUILayoutOption buttonStyle = GUILayout.Width(135);
             using (var scope = new GUILayout.VerticalScope("box"))
             {
                 using (var scope2 = new GUILayout.HorizontalScope())
@@ -528,6 +564,40 @@ namespace RemoteLab.Editor
             EditorGUILayout.Separator();
 
             // TODO: grab questionnaire manager, check all questionnaires to be run, render a button for each
+            List<QuestionnaireInformation> questionnaires = SpawnQuestionnaires.Instance.questionnairesToSpawn;
+
+            if (questionnaires.Count == 0)
+            {
+                EditorGUILayout.HelpBox("No questionnaires found in QuestionnaireManager.", MessageType.Info);
+            }
+            else
+            {
+                if (PhotonNetwork.InRoom)
+                {
+                    foreach (QuestionnaireInformation questionnaire in questionnaires)
+                    {
+                        GameObject q = GameObject.Find(questionnaire.name + "(Clone)");
+                        if (q == null)
+                        {
+                            if (GUILayout.Button(questionnaire.name))
+                            {
+                                PhotonNetwork.Instantiate(questionnaire.name, questionnaire.position, Quaternion.Euler(questionnaire.rotation));
+                            }
+                        }
+                        else
+                        {
+                            if (GUILayout.Button("Remove " + questionnaire.name))
+                            {
+                                PhotonNetwork.Destroy(q);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    EditorGUILayout.HelpBox("Waiting for Photon...", MessageType.Info);
+                }
+            }
         }
 
         void SceneActions()

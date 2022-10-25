@@ -386,7 +386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.3999939}
+  m_AnchoredPosition: {x: 0, y: 1.4}
   m_SizeDelta: {x: 1.6, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1922774141358017793
@@ -532,9 +532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef09987501a7f541be13b4c843ddebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInstantiatedAtRuntime: 1
-  resourceName: NASA_TLX_Local
-  guidString: 
+  isInstantiatedAtRuntime: 0
+  resourceName: 
+  guidString: 36de01d2-3c7d-4eea-bfb9-d481d6f493ef
   loggedStart: 0
   registeredToManager: 0
 --- !u!1 &1922774141381334561

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4150549118307996436}
   - component: {fileID: 7390264259588140381}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: LocalHeadAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 4150549118676663261}
   - component: {fileID: 4150549118676663266}
   - component: {fileID: 4150549118676663267}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

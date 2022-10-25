@@ -20,7 +20,7 @@ public class RecordExample : MonoBehaviour
     /// <summary>
     /// Remember to add "using Google.Protobuf;".
     /// To create and write the record to a protobuf, I've created a Record object that holds a List of Steps.
-    /// A single Step is an entry in your spreadsheet, and it holds all the data you're tracking.
+    /// A single Step is an entry in your spreadsheet, and it holds all the data you're recording.
     /// 
     /// You first create a Record object, put it aside.
     /// Create a Step object, and fill all the parameters you need (name, pos, hierarchy, etc).
@@ -73,10 +73,10 @@ public class RecordExample : MonoBehaviour
     /// Feel free to edit the record.proto file as needed (under ReplaySystem/Scripts/Protobufs).
     /// The protobuffed file is saved at the root of the Assets folder.
     /// 
-    /// Consider further optimizations, such as mapping the names of the tracked GameObjects into a table and coding
+    /// Consider further optimizations, such as mapping the names of the recorded GameObjects into a table and coding
     /// the names into an int, or reducing the string size of the Hierarchy field, etc. Feel free to play around
     /// with the number of generated objects, the sampling rate, and seconds to store. Doing something ridiculous like
-    /// tracking 100 objects for an hour at a 30Hz sampling rate gives us 952 MB. That's very well optimized vs. if we
+    /// recording 100 objects for an hour at a 30Hz sampling rate gives us 952 MB. That's very well optimized vs. if we
     /// stored all as strings.
     /// </summary>
     private void ReadRecord()

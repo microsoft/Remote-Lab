@@ -13,7 +13,7 @@ namespace RemoteLab
     public class QuestionnaireManager : MonoBehaviour
     {
         [Header("Questionnaire Content")]
-        [SerializeField] QuestionnaireContent questionnaireContent;
+        public QuestionnaireContent questionnaireContent;
 
         [Header("Default Buttons")]
         [SerializeField] GameObject prevButton;

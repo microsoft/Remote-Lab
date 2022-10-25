@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3160053227678396619}
   - component: {fileID: 7390264259588140381}
   - component: {fileID: 5536528104937928585}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: HeadAvatar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInstantiatedAtRuntime: 1
   resourceName: LocalHeadAvatar
-  guidString: 
+  guidString: 438b686c-e55a-489b-8f56-9e143e911f7d
   loggedStart: 0
   registeredToManager: 0
 --- !u!114 &5536528104937928585
@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 4150549118676663261}
   - component: {fileID: 4150549118676663266}
   - component: {fileID: 4150549118676663267}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -35,7 +35,7 @@ namespace RemoteLab
             SetupEventSystems();
 
             ReparentObjects();
-            ReplaceSurveys();
+            ReplaceQuestionnaires();
 
             AddReplayUI();
         }
@@ -75,15 +75,15 @@ namespace RemoteLab
             replaySystem.enabled = true;
         }
 
-        void ReplaceSurveys()
+        void ReplaceQuestionnaires()
         {
-            NetQuestionnaireManager[] netSurveys = FindObjectsOfType<NetQuestionnaireManager>();
+            NetQuestionnaireManager[] netQuestionnaires = FindObjectsOfType<NetQuestionnaireManager>();
 
-            foreach (NetQuestionnaireManager netSurvey in netSurveys)
+            foreach (NetQuestionnaireManager netQuestionnaire in netQuestionnaires)
             {
-                QuestionnaireManager sm = netSurvey.GetComponent<QuestionnaireManager>();
+                QuestionnaireManager sm = netQuestionnaire.GetComponent<QuestionnaireManager>();
                 sm.enabled = true;
-                netSurvey.enabled = false;
+                netQuestionnaire.enabled = false;
             }
         }
 

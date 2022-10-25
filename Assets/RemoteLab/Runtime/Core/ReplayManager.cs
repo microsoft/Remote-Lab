@@ -47,7 +47,7 @@ namespace RemoteLab
 
         private ulong frameOffset;
 
-        public HashSet<Recordable> trackables;
+        public HashSet<Recordable> recordables;
         public HashSet<InteractableUI> interactableUIs;
 
         private bool startUnityRecord;
@@ -70,7 +70,7 @@ namespace RemoteLab
                 _instance = this;
             }
 
-            trackables = new HashSet<Recordable>();
+            recordables = new HashSet<Recordable>();
             interactableUIs = new HashSet<InteractableUI>();
         }
 
@@ -96,7 +96,7 @@ namespace RemoteLab
             if (recording && (currFrameCount - frameOffset) % iframeInterval == 0)
             {
                 // Write in i-frame data
-                LogTrackableIFrame(false);
+                LogRecordableIFrame(false);
                 LogAllInteractableUI();
             }
         }
@@ -149,12 +149,10 @@ namespace RemoteLab
             }
             else
             {
-                // Clear tracking lists?
-                trackables.Clear();
+                recordables.Clear();
                 interactableUIs.Clear();
 
-                // Record Trackables into list
-                RegisterAllTrackables();
+                RegisterAllRecordables();
                 RegisterAllInteractableUIs();
 
                 if (recordOBS)
@@ -173,28 +171,28 @@ namespace RemoteLab
             CloseAllWriters();
         }
 
-        private void RegisterAllTrackables()
+        private void RegisterAllRecordables()
         {
 
 #if UNITY_EDITOR
 
-            foreach (Recordable tr in Resources.FindObjectsOfTypeAll(typeof(Recordable)) as Recordable[])
+            foreach (Recordable r in Resources.FindObjectsOfTypeAll(typeof(Recordable)) as Recordable[])
             {
-                if (!EditorUtility.IsPersistent(tr.gameObject.transform.root.gameObject) && !(tr.gameObject.hideFlags == HideFlags.NotEditable || tr.gameObject.hideFlags == HideFlags.HideAndDontSave))
+                if (!EditorUtility.IsPersistent(r.gameObject.transform.root.gameObject) && !(r.gameObject.hideFlags == HideFlags.NotEditable || r.gameObject.hideFlags == HideFlags.HideAndDontSave))
                 {
-                    trackables.Add(tr);
-                    tr.registeredToManager = true;
+                    recordables.Add(r);
+                    r.registeredToManager = true;
                 }
             }
 
 #else
         
-        UnityEngine.Debug.LogError("Cannot record all Trackables from non-editor client");
+        UnityEngine.Debug.LogError("Cannot record all Recordables from non-editor client");
 
-        foreach (Trackable tr in GameObject.FindObjectsOfType<Trackable>())
+        foreach (Recordable r in GameObject.FindObjectsOfType<Recordable>())
         {
-            trackables.Add(tr);
-            tr.registeredToManager = true;
+            recordables.Add(r);
+            r.registeredToManager = true;
         }
 
 #endif
@@ -227,29 +225,28 @@ namespace RemoteLab
 #endif
         }
 
-        private void LogTrackableIFrame(bool initialFrame)
+        private void LogRecordableIFrame(bool initialFrame)
         {
-            foreach (Recordable t in trackables)
+            foreach (Recordable r in recordables)
             {
-                if (t.gameObject.activeInHierarchy)
+                if (r.gameObject.activeInHierarchy)
                 {
                     ObjectStatus status = (initialFrame) ? ObjectStatus.Instantiated : ObjectStatus.IFrame_Active;
-                    WriteTransformDataEntry(t.transform, status, t.guidString, t.resourceName);
+                    WriteTransformDataEntry(r.transform, status, r.guidString, r.resourceName);
                 }
                 else
                 {
                     ObjectStatus status = (initialFrame) ? ObjectStatus.Deactivated : ObjectStatus.IFrame_Inactive;
-                    WriteTransformDataEntry(t.transform, status, t.guidString, t.resourceName);
+                    WriteTransformDataEntry(r.transform, status, r.guidString, r.resourceName);
                 }
             }
         }
 
         private void LogFinalFrame()
         {
-            // Log all trackables including inactive ones
-            foreach (Recordable t in trackables)
+            foreach (Recordable r in recordables)
             {
-                WriteTransformDataEntry(t.transform, ObjectStatus.Destroyed, t.guidString, t.resourceName);
+                WriteTransformDataEntry(r.transform, ObjectStatus.Destroyed, r.guidString, r.resourceName);
             }
         }
 
@@ -261,11 +258,11 @@ namespace RemoteLab
             }
         }
 
-        private void SetLoggedStartForTrackables(bool start)
+        private void SetLoggedStartForRecordables(bool start)
         {
-            foreach (Recordable t in trackables)
+            foreach (Recordable r in recordables)
             {
-                t.loggedStart = start;
+                r.loggedStart = start;
             }
         }
 
@@ -316,14 +313,12 @@ namespace RemoteLab
         {
             print("Called StartUnityRecord");
             InitializeRecording();
-            //frameOffset = Time.frameCount;
             frameOffset = currFrameCount;
             recording = true;
-            //LogAllTrackables(ObjectStatus.Instantiated);
 
-            LogTrackableIFrame(true);
+            LogRecordableIFrame(true);
             LogAllInteractableUI();
-            SetLoggedStartForTrackables(true);
+            SetLoggedStartForRecordables(true);
         }
 
         private void StopUnityRecord()
@@ -332,7 +327,7 @@ namespace RemoteLab
             LogAllInteractableUI();
 
             recording = false;
-            SetLoggedStartForTrackables(false);
+            SetLoggedStartForRecordables(false);
             CloseAllWriters();
         }
 

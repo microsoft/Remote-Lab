@@ -187,7 +187,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1732808951507650, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4897607310870066, guid: a9d2de84afb308a4796cc671d3432b4d, type: 3}
       propertyPath: m_RootOrder
@@ -933,7 +933,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!81 &1648962712
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1669,7 +1669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInstantiatedAtRuntime: 0
   resourceName: 
-  guidString: 
+  guidString: 978b8b1a-f9b8-4f85-8b6f-82a7be45d4fb
   loggedStart: 0
   registeredToManager: 0
 --- !u!114 &1760441938515073
@@ -2592,7 +2592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1005457342254917199, guid: b0534fe3270fd8546821032bc9bc0778, type: 3}
       propertyPath: roomName
-      value: Room
+      value: Test
       objectReference: {fileID: 0}
     - target: {fileID: 1005457342254917199, guid: b0534fe3270fd8546821032bc9bc0778, type: 3}
       propertyPath: m_Enabled
@@ -2612,7 +2612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1005457342254917199, guid: b0534fe3270fd8546821032bc9bc0778, type: 3}
       propertyPath: researcherObjs.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1005457342254917199, guid: b0534fe3270fd8546821032bc9bc0778, type: 3}
       propertyPath: participantObjs.Array.size
@@ -2621,7 +2621,7 @@ PrefabInstance:
     - target: {fileID: 1005457342254917199, guid: b0534fe3270fd8546821032bc9bc0778, type: 3}
       propertyPath: researcherObjs.Array.data[0]
       value: 
-      objectReference: {fileID: 3680607433127796671}
+      objectReference: {fileID: 1648962711}
     - target: {fileID: 1005457342254917199, guid: b0534fe3270fd8546821032bc9bc0778, type: 3}
       propertyPath: researcherObjs.Array.data[1]
       value: 
@@ -2808,7 +2808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4157738157335029263, guid: d8894ad691d297e45a9fb5a4fdacda17, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8894ad691d297e45a9fb5a4fdacda17, type: 3}
@@ -2925,7 +2925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212059833216097735, guid: 95070c0baec14ea4d8f3b0d5bfe04924, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212059833216097757, guid: 95070c0baec14ea4d8f3b0d5bfe04924, type: 3}
       propertyPath: m_RootOrder
@@ -3082,58 +3082,6 @@ PrefabInstance:
     - target: {fileID: 8906077098230873085, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
       propertyPath: m_Name
       value: QuestionnaireManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[0].name
-      value: Likert
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[1].name
-      value: SUS
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[2].name
-      value: NASA_TLX
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[0].location.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[0].location.z
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[0].rotation.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[1].location.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[1].location.z
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[1].rotation.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[2].location.y
-      value: 1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[2].location.z
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906077098230873087, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}
-      propertyPath: questionnairesToSpawn.Array.data[2].rotation.y
-      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71cf1d4f1bdd7584cbc683f3fe23ec18, type: 3}

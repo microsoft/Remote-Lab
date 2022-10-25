@@ -52,9 +52,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef09987501a7f541be13b4c843ddebe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isInstantiatedAtRuntime: 1
+  isInstantiatedAtRuntime: 0
   resourceName: 
-  guidString: 26a6905e-e9b3-4899-b1b6-3d06cd4f5761
+  guidString: 1e681c3b-44f5-440c-8ed0-1888346c4dab
   loggedStart: 0
   registeredToManager: 0
 --- !u!1 &8476815930250973930

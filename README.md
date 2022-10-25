@@ -1,6 +1,6 @@
-# Remote Lab Toolkit (Beta)
+Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Rodriguez (UIUC), Eyal Ofek (MSR), Payod Panda (MSR)
 
-## TODO: Change README.md for new Survey System, Video Player
+# XR-Remote-Study-Toolkit
 
 ## Table of Contents
 1. [About](#about)
@@ -8,18 +8,35 @@
 3. [Usage](#usage)
     1. [Initial Setup](#initial_setup)
     2. [OBS Integration](#obs)
-    3. [Tracking Transform Data](#tracking_transform)
-        1. [Tracking Non-Instantiated GameObjects](#tracking_noninst)
-        2. [Tracking Instantiated GameObjects](#tracking_inst)
+    3. [Recording Transform Data](#recording_transform)
+        1. [Recording Non-Instantiated GameObjects](#recording_noninst)
+        2. [Recording Instantiated GameObjects](#recording_inst)
     4. [Interactable UI](#interactable_ui)
     5. [Tracking Custom Variables](#custom_var)
-    6. [Survey](#custom_survey)
+    6. [Questionnaire](#custom_questionnaire)
     7. [Replay System](#replay_system)
 4. [Example Study](#example)
 
 
 ## About <a name="about"></a>
-The XR Remote study toolkit is a toolkit for Unity that allows users to record and replay gameplay from the Unity editor window. The toolkit currently allows users to track the changes in Transform for each GameObject in the scene, record UI events (Toggle, Button, and Slider events), note changes in user-defined variables, and implement custom Likert scale surveys and the raw NASA-TLX survey. The toolkit was developed as a part of a research project and it is served as is, to the benefit of the research community. 
+The XR Remote study toolkit is a toolkit for Unity that allows users to record and replay gameplay from the Unity editor window. The toolkit currently allows users to track the changes in Transform for each GameObject in the scene, record UI events (Toggle, Button, and Slider events), note changes in user-defined variables, and implement custom Likert scale surveys and the raw NASA-TLX survey. 
+
+This work was done as a collaboration wetween Microsoft Research and researchers from University of Washington, Vanderbuilt University and UIUC.
+The work is described in a paper (to be) presented at UIST 2022, Bend, Oragon.
+
+The reference for the paper is:
+
+```@inproceedings{lee2022remotelab,
+author = {Lee, Jaewook and Natarrajan, Raahul and Rodriguez, Sebastian S. and Panda, Payod and Ofek, Eyal},
+title = {RemoteLab: Virtual Reality Remote Study ToolKit},
+organization = {ACM},
+booktitle = {UIST},
+year = {2022},
+month = {October},
+publisher = {ACM},
+url = {https://www.microsoft.com/en-us/research/publication/remotelab-virtual-reality-remote-study-toolkit/},
+}
+```
 
 ## Installation <a name="installation"></a>
 Download the latest Unity package from the Releases section. Then, import the package into Unity by selecting `Assets > Import Package > Custom Package` from the Unity menu bar. The package contents will be imported into a folder called Replay System in the Unity Assets folder for your project.
@@ -27,47 +44,59 @@ Download the latest Unity package from the Releases section. Then, import the pa
 ## Usage <a name="usage"></a>
 
 ### Initial Setup <a name="initial_setup"></a>
-To set up the recording system, drag the `Replay Manager` prefab from `Assets/Replay System/Prefabs/System` into the scene you want to record. 
 
-![ReplayManager.cs](docs/imgs/ReplayManager.PNG "Replay Manager Component")
+![RemoteLab panel](docs/imgs/RemoteLabPanel.png "RemoteLab Panel")
+
+First, open the RemoteLab panel by selecting `RemoteLab > Control Panel` from the Unity menu bar. The RemoteLab panel contains useful actions needed to successfully execute a study using RemoteLab's features.
+
+![Replay button](docs/imgs/ReplayButton.png "Replay Button")
+
+To set up the recording system, add the `Replay Manager` prefab by clicking the `Replay` button located under `Add RemoteLab Manager to Scene`. 
+
+![Replay Manager Component](docs/imgs/ReplayManager.PNG "Replay Manager Component")
 
 The `Replay Manager` prefab contains the `ReplayManager` script, which controls the scene recording functionality. The `Transform Data File Prefix` determines the name of the CSV file containing the tracked Transform information. `Controller Data File Prefix` determines the name of the CSV file containing the tracked controller data. `UI Event Data File Prefix` determines the name of the CSV file containing the logged UI events. `Custom Variable Data File Prefix` determines the name of the CSV file containing the logged data for user-defined variables. 
 
 The `Session Id` and `Participant Id` values determine where the data will be stored. If the `Session Id` is `session_1` and `Participant Id` is `participant_1`, then the recordings will be stored in `Assets/Recordings/session_1/participant_1`. Within the `Assets/Recordings/session_1/participant_1` folder, there will be one or multiple folders with time stamps as the name of the folder in the format of `MM-DD-YYYY_HH-MM-SS_XM`. Each folder will contain the recording files for recordings started at the time stamp indicated by the folder name.
 
-In order to start recording, run the scene in the editor and then select `Start Stop Recording` in the `Replay Manager` component. To stop recording, select `Start Stop Recording` again. The `Recording` field lets you know whether or not the system is recording at the moment. The `Record OBS` field lets you select if you should also record your screen using OBS. More details will be provided in the [OBS section](#obs). The `Frame Rate` field determines at what frame rate the system will record the gameplay. The `Trackables` parameter list lets you visualize at runtime what objects are being tracked.
+![Starting and stopping recording and/or OBS](docs/imgs/RecordingWorkFlow.png "Starting and stopping recording and/or OBS")
+
+In order to start recording, run the scene in the editor or click the `Start Experiment` button located under `Experiment Actions`. Then click the `Start Recording` button located under `Experiment Actions`. To stop recording, click the `Stop Recording` button located under `Experiment Actions`. To use OBS, toggle `Use OBS` on before clicking the `Start Experiment` button. More details will be provided in the [OBS section](#obs). The `Frame Rate` field in the `ReplayManager` script determines at what frame rate the system will record the gameplay. The `Recordables` list lets you visualize at runtime what objects are being tracked.
 
 ## OBS Integration <a name="obs"></a>
 OBS Studio lets you record video through screen captures. If you are interested in recording your screen during the recording session, you can integrate OBS with this toolkit. First, you will need to install OBS Studio by downloading the appropriate package from [https://obsproject.com/](https://obsproject.com/). The rest of the instructions assumes that you are familiar with the OBS interface.
 
 Next, you will need to install `obs-websocket` in order to allow the toolkit to interface with the OBS software. The software can be found at [https://github.com/obsproject/obs-websocket](https://github.com/obsproject/obs-websocket). Install the appropriate version for your OBS client. 
 
-The toolkit interacts with the OBS software through the `OBS Manager`script. 
+The toolkit interacts with the OBS software through the `OBS Manager`script located in the `ReplayManager` prefab. 
 
 ![OBSManager.cs](docs/imgs/OBSManager.PNG "OBS Manager Component")
 
 The `Obs Path` parameter sets the path to the directory that contains the OBS Studio executable. The `Url` paramter sets the endpoint that the toolkit should connect to in order to attach itself to the OBS software. This path is something you will set inside of the OBS Studio setting before running the toolkit. Similarly, the `Password` parameter is the password to connect to the URL endpoint for the OBS client. The `Wait For OBS Delay` setting lets you determine how long to wait for the OBS software to boot up in seconds before retrying. Adjust this setting based on how long software takes to boot up on your computer. The `RetryLimit` setting determines how many times the `OBS Manager` will retry a connection to the OBS software. If the `OBS Manager` reaches the retry limit, then the recording process will be aborted and nothing will be recorded. 
 
-To record the screen using OBS alongside the toolkit, first set up the OBS displays beforehand in the OBS software. Then, verify that the `Record OBS` option is selected in the `Replay Manager`. Make sure to select these settings before running the scene. Afterwards, run the scene and select `Start Stop Recording` to start recording. Once you are finished, select `Start Stop Recording` to stop recording. 
+To record the screen using OBS alongside the toolkit, first set up the OBS displays beforehand in the OBS software. Then, verify that the `Use OBS` option is selected in the RemoteLab panel, as described in a previous paragraph. Make sure to select these settings before running the scene. Afterwards, run the scene and click the `Start Recording` button to start recording. Once you are finished, click the `Stop Recording` button to stop recording. 
 
-## Tracking Transform data for a GameObject <a name="tracking_transform"></a>
-In order to track the transform information for a GameObject during runtime, you need to add a `Trackable` component to that GameObject. The `Trackable` component can be found in `Assets/Replay System/Scripts`. You can either drag and drop the `Trackable.cs` file onto the GameObject or add the component throught the `Add Component` option in the `Inspector`. 
+## Recording Transform data for a GameObject <a name="recording_transform"></a>
 
-### Trackable Component for non-instantiated GameObject <a name="tracking_noninst"></a>
-![Trackable.cs](docs/imgs/Trackable.PNG "Trackable Component")
+![Recordable Button](docs/imgs/RecordableButton.PNG "Recordable Button")
 
-The above picture shows the Trackable component for a non-instantiated GameObject (GameObject not created during runtime using a method call like `Instantiate()`). To finish the setup for a non-instantiated GameObject, select `Generate GUID` in order to generate a GUID for the GameObject. This is a unique ID for the GameObject used during the replay of a recording.
+In order to record the transform information for a GameObject during runtime, you need to add a `Recordable` component to that GameObject. To do so, click on the desired gameobject, then click the `Recordable` button located under `Add RemoteLab component to GameObject`. This will also automatically add the gameobject to the `Recordables` list.
 
-If the GameObject is instantiated at runtime, you need to turn on `Is Instantiated At Runtime` if the object will be instantiated at runtime. This selection will cause another section called `Resource Path` to pop up. 
+### Recording Component for non-instantiated GameObject <a name="Recording_noninst"></a>
+![Recordable.cs](docs/imgs/Recordable.png "Recordable Component")
 
-### Trackable Component for instantiated GameObject <a name="tracking_inst"></a>
-![Trackable.cs Instanced](docs/imgs/TrackableInstanced.PNG "Trackable Component for Instanced Objects")
+The above picture shows the Recordable component for a non-instantiated GameObject (GameObject not created during runtime using a method call like `Instantiate()`). To finish the setup for a non-instantiated GameObject, select `Generate GUID` in order to generate a GUID for the GameObject. This is a unique ID for the GameObject used during the replay of a recording.
+
+If the GameObject will be instantiated at runtime, you need to turn on `Is Instantiated At Runtime`. This selection will cause another section called `Resource Path` to pop up. 
+
+### Recordable Component for instantiated GameObject <a name="recording_inst"></a>
+![Recordable.cs Instanced](docs/imgs/RecordableInstanced.PNG "Recordable Component for Instanced Objects")
 
 This selection will also remove the `Generate GUID` button. If the GameObject is instantiated at runtime, make sure that the `Guid String` field is empty. The GUID is not set for instantiated objects for the recording and replay functions.
 
-The `Resource Path` field is used to determine where the instantiated object is located in the Assets folder for the replay system so that the object can be instantiated accordingly. For the replay system to correctly find the instantiated object, put the GameObject in a folder labelled Resources such as `Assets/Resources`. 
+The `Resource Path` field is used to determine where the instantiated object is located in the Assets folder for the replay system so that the object can be instantiated accordingly. For the replay system to correctly find the instantiated object, put the GameObject in a folder labeled Resources such as `Assets/Resources`. 
 
-Now, the GameObject with the Trackable component will have its Transform information recorded and ready for replay.
+Now, the GameObject with the Recordable component will have its Transform information recorded and ready for replay.
 
 ## Interactable UI <a name="interactable_ui"></a>
 The XR Remote Study Toolkit can track UI events for buttons, toggles, and sliders. To track a UI event, add a `Interactable UI` component to the UI object in the scene through drag-and-drop or adding the component through the `Inspector`. 
@@ -76,7 +105,7 @@ The XR Remote Study Toolkit can track UI events for buttons, toggles, and slider
 
 The `Interactable Type` field is a drop-down menu, which lets you select one of the three types of UI events you want to track (button, toggle, slider). The `Guid String` field is filled by selecting the `Generate GUID` button. Generate the GUID for the component if the object containing the UI element will be instantiated at runtime. Otherwise, make sure to leave the `Guid String` field blank. 
 
-The UI element with the `Interactable UI` component is ready for tracking UI events.
+The UI element with the `Interactable UI` component is ready for recording UI events.
 
 ## Tracking Custom Variables <a name="custom_var"></a>
 In order to track user-defined variables like a member variable in a user-defined class, you need to set up the tracking mechanism through additional lines of code. For instance, suppose you have the following class.
@@ -184,60 +213,54 @@ public class CustomVariableExample : MonoBehaviour
 }
 ```
 
-## Survey <a name="custom_survey"></a>
-We can easily create surveys using the XR Remote Study Toolkit. In order to make a custom survey, first drag and drop the `Survey` prefab from the `Replay System/Prefabs/Surveys` folder into the scene. Now, we must generate a `Survey Content` object and drag and drop it into the `Survey Content` parameter of `SurveyManager` component attached to the `Survey` prefab.
+## Questionnaire <a name="custom_questionnaire"></a>
+We can easily create questionnaires using the XR Remote Study Toolkit. In order to make a custom questionnaire, first drag and drop the `Net Questionnaire` prefab from the `RemoteLab/Resources/Prefabs/Questionnaires/Resources` folder into the scene. Now, we must generate a `Questionnaire Content` object and drag and drop it into the `Questionnaire Content` parameter of `Net Questionnaire Manager` component and `Questionnaire Manager` component attached to the `Net Questionnaire` prefab.
 
-![SurveyManager.cs](docs/imgs/Survey_Manager.png "Survey Manager Component")
+![Questionnaire.cs](docs/imgs/Quetsionnaire_Manager.png "Questionnaire Manager Component")
 
-In order to create a custom `Survey Content` object for your survey, right click in the `Project` folder and select `Create > Survey Content`. Once you click on the generated object, you should see an empty `Survey Content` object.
+In order to create a custom `Questionnaire Content` object for your questionnaire, click the `New Questionnaire` button located under `Add Questionnaire`. You should see an empty `Questionnaire Content` scriptable object.
 
-![Create Survey Content Object](docs/imgs/Generate_SurveyContent.PNG "Create Survey Content Object")
+![Empty Questionnaire Content](docs/imgs/QuestionnaireContent.png "Empty Questionnaire Content")
 
-![Empty Survey Content](docs/imgs/SurveyContent.png "Empty Survey Content")
-
-![Survey Question Entry](docs/imgs/SurveyQuestion.png "Survey Question Entry")
-
-You can populate the list by clicking on the `+` button or increasing the number of survey questions to more then zero and filling in the corresponding details.
+You can populate the list by clicking on the `+` button or increasing the number of questionnaire questions to more then zero and filling in the corresponding details.
 
 First, fill in the question.
 
+![Questionnaire Question Entry](docs/imgs/QuestionnaireQuestion.png "Questionnaire Question Entry")
+
 Then, select a choice type. `Single` represents a multiple choice question where participants can only select one answer. `Multiple` represents a multiple choice question where participants can select multiple answers. Finally, `Slider` represents questions where participants can select a value from a range of values. Each choice type requires different parameters, which researchers can specify.
 
-![Single_Choice](docs/imgs/SingleSurvey.png "Survey Single Choice Survey")
+![Single_Choice](docs/imgs/Single.png "Single Choice Option")
 
-![Multiple_Choice](docs/imgs/MultipleSurvey.png "Survey Multiple Choice Survey")
+![Multiple_Choice](docs/imgs/Multiple.png "Multiple Choice Option")
 
-![Slider](docs/imgs/SliderSurvey.png "Survey Slider Survey")
+![Slider](docs/imgs/Slider.png "Slider Option")
 
-Finally, researchers can specify whether a question can be skipped by the participants or not. Simply toggle the `Can Skip Question` parameter to do so.
+Finally, researchers can specify whether a question can be skipped (i.e., not provide an answer) by the participants or not. Simply toggle the `Can Skip Question` parameter to do so.
 
-The toolkit provides you with a pre-made `SUS` `NASA TLX` and `LikertScale` Survey Content objects for use, which can be found in the `Replay System/Prefabs/Surveys/Examples` folder. Please check them out to see how Survey Content object can be expanded to fit different surveys.
+The toolkit provides you with a pre-made `LikertScale` `SUS` and `NASA TLX` Questionnaire Content objects for use, which can be found in the `RemoteLab/Resources/Prefabs/Questionnaires/Examples` folder. Please check them out to see how Questionnaire Content object can be expanded to fit different questionnaires.
 
-![SUS Survey Content](docs/imgs/SUS.png "SUS Survey Content")
+![SUS Questionnaire Content](docs/imgs/SUS.png "SUS Questionnaire Content")
 
-![NASA_TLX Survey Content](docs/imgs/NASA_TLX.png "NATA TLX Survey Content")
+![NASA TLX Questionnaire Content](docs/imgs/NASA_TLX.png "NATA TLX Questionnaire Content")
 
-![Likert Survey Content](docs/imgs/LikertScale.png "Likert Scale Survey Content")
+![Likert Questionnaire Content](docs/imgs/LikertScale.png "Likert Scale Questionnaire Content")
 
-Before using the survey, make sure to generate the GUIDs for the previous, next, and skip button UI elements, which are called `PrevButton` `NextButton` and `SkipButton` respectively.
+Before using the questionnaire, make sure to generate the GUIDs for the previous, next, and skip button UI elements, which are called `PrevButton` `NextButton` and `SkipButton` respectively.
 
-Finally, to use your created Survey Content for the survey, select the appropriate Survey Content file as the parameter for the `Survey Content` field in the `Survey Manager` Component.
+To use your created Questionnaire Content for the questionnaire, select the appropriate Questionnaire Content file as the parameter for the `Questionnaire Content` field in the `Net Questionnaire Manager` and `Questionnaire Manager` components.
 
-![SurveyManager.cs](docs/imgs/Survey_Manager.png "Survey Manager Component")
+Finally, drag and drop the questionnaire prefab as a new prefab into the `RemoteLab/Resources/Prefabs/Questionnaires/Resources` folder. This prefab is the networked questionnaire. In the `QuestionnaireManager` prefab, add the name of this prefab into the `Questionnaires to Spawn` list. Duplicate this prefab and rename it by adding `_local` at the end. Additionally, enable the `Questionnaire Manager` script, disable the `Net Questionnaire Manager` script, and uncheck `Is Instantiated at Runtime`. This is the local version of the questionnaire, which will be used by the replay system.
 
-When a survey is submitted by a participant, the corresponding data is written to a CSV file with the following naming convention: nameOfTheGameObject_survey_data.csv. The CSV file is stored in the `Assets` folder.
+When a questionnaire is filled and submitted by a participant, the corresponding data is written to a CSV file with the following naming convention: nameOfTheQuestionnaireGameObject_questionnaire_data.csv.
 
-## Setting up surveys and UI
-In order to interact with the survey objects and other UI objects in general, you need to use or implement a form of UI interactor for your XR system. For instance, if you are using the Oculus (OVR) Integration, you need to add the `OVR Raycaster` to the top-level GameObject for any survey that you are using. Furthermore, you need to use some kind of UI input selector for your scene. For Oculus, we set up the UI interaction system using the `UIHelpers` prefab from the Oculus Integration package.
+## Setting up questionnaire and UI
+In order to interact with the questionnaire objects and any other UI objects, you need to use or implement a form of UI interactor for your XR system. For instance, if you are using the Oculus (OVR) Integration, you need to add the `OVR Raycaster` to the top-level GameObject for any survey that you are using. Furthermore, you need to use some kind of UI input selector for your scene. For Oculus, we set up the UI interaction system using the `UIHelpers` prefab from the Oculus Integration package.
 
 ## Replay System <a name="replay_system"></a>
 The replay system implemented in the toolkit replays whatever information was recorded in the CSV files for UI events and Transform changes. So, the replay does include the replaying of animations and in-game events that cannot be fully captured through changes in transform, instantiation, object destruction, activation, deactivation, and UI click, slide, and toggle events.
 
-To set up the system for replay, first duplicate the scene to be replayed. Then, remove the `ReplayManager` object from the scene, and add the `ReplaySystem` prefab from the `Replay System/Prefabs/System` folder. 
-
-Now, go into the scene hierarchy and disable any scripts that will interfere with the replay system. These include scripts that manipulate the `Transform` or `Rigidbody` components. This process will involve trial and error. Next, find all `Rigidbody` components in the scene and set the `Rigidbody` to kinematic so that object physics does not interfere with the replay. You set a `Rigidbody` to kinematic by selecting the option `Is Kinematic`.
-
-![Rigidbody](docs/imgs/Rigidbody.PNG "Disabled Rigidbody")
+To set up the system for replay, first duplicate the scene to be replayed. Then, with the duplicated scene loaded, click on the `Set Up Replay` button located under `Experiment Actions` to transform the scene into a replay scene.
 
 Now, go to the `Replay System` prefab and verify some parameters.
 
@@ -250,7 +273,7 @@ To replay the recording, first run the replay scene. Then, in the game view, you
 ## Example Study <a name="example"></a>
 To understand how everything in the toolkit works, we have provided an example user study designed using the toolkit. The example study also uses `Photon PUN` for networking. So, this example will also provide some guidance on how to design a networked study using the toolkit. To use `Photon PUN`, first go to [https://www.photonengine.com/pun](https://www.photonengine.com/pun) to understand how to install and use the package. The toolkit provides some template scripts to use for networking, but it will be helpful to understand how the code works behind the scenes. 
 
-We provide two scenes as part of the example study, `[NET] Sample Experiment` and `REPLAY - Sample Experiment`. The `[NET] Sample Experiment` scene contains a basic user study scene set up using the toolkit. The `REPLAY - Sample Experiment` scene contains the replay scene set up for the study conducted in `[NET] Sample Experiment`. You can use these scenes as templates for your own studies. 
+We provide one scene as part of the example study, `[NET] Sample Experiment`. The `[NET] Sample Experiment` scene contains a basic user study scene set up using the toolkit. You can use this scene as a template for your own studies. 
 
 The example study uses the Oculus SDK for the VR system.
 
@@ -287,39 +310,3 @@ An example conversion is `Net Physics` script for any objects that need to have 
 
 ### REPLAY - Sample Experiment
 This scene contains the converted version of the `[NET] SampleExperiment` scene. In this scene the `[NET] SampleExperiment` scene has been converted following the instruction in the [Replay System](#replay_system) section. This scene additionally removes any Photon script and Net scripts from all object so that the replay system does not fail due to faulty networking in a scene that is not supposed to be networked. It contains the main `Replay System` component in the `Replay Manager` object to handle the replay of recordings. Please follow the Replay System instructions to set up recordings to replay. 
-
-## Contributors
-### TODO: Add more info here, photos, links, contributions
-
-Jaewook Lee - University of Washington
-
-Raahul Natarajan - Vanderbilt University
-
-Sebastian Rodriguez - University of Illinois at Urbana-Champaign
-
-Payod Panda - Microsoft Research
-
-Eyal Ofek - Microsoft Research
-
-
-## Contributing
-
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
-
-When you submit a pull request, a CLA bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
-## Trademarks
-
-This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft 
-trademarks or logos is subject to and must follow 
-[Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
-Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
-Any use of third-party trademarks or logos are subject to those third-party's policies.

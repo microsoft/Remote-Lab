@@ -71,7 +71,7 @@ public class NetDistanceGrabbable : OVRGrabbable
             else if (!InRange) m_crosshair.SetState(NetGrabbableCrosshair.CrosshairState.Disabled);
             else m_crosshair.SetState(Targeted ? NetGrabbableCrosshair.CrosshairState.Targeted : NetGrabbableCrosshair.CrosshairState.Enabled);
         }
-        if (m_materialColorField != null)
+        if (m_materialColorField != null && m_crosshairManager != null)
         {
             m_renderer.GetPropertyBlock(m_mpb);
             if (isGrabbed || !InRange) m_mpb.SetColor(m_materialColorField, m_crosshairManager.OutlineColorOutOfRange);

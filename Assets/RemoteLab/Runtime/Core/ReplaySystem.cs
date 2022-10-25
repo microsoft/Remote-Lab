@@ -268,6 +268,7 @@ namespace RemoteLab
             }
 
             curFrame = scrubbedFrame;
+            pauseReplay = true;
         }
 
         private void OnSeekComplete(VideoPlayer source)
@@ -740,26 +741,26 @@ namespace RemoteLab
             currReplayCollection = Instantiate(origReplayCollection);
             currReplayCollection.SetActive(true);
 
-            // Get non-instantiated objects i.e. non-inst (active + inactive) trackables in collection (scene)
-            Recordable[] trackedObjs = currReplayCollection.GetComponentsInChildren<Recordable>(true);
+            // Get non-instantiated objects i.e. non-inst (active + inactive) recordables in collection (scene)
+            Recordable[] recordedObjs = currReplayCollection.GetComponentsInChildren<Recordable>(true);
 
-            foreach (Recordable tracked in trackedObjs)
+            foreach (Recordable recordedObj in recordedObjs)
             {
-                if (!tracked.isInstantiatedAtRuntime && !guidToObject.ContainsKey(tracked.guidString))
+                if (!recordedObj.isInstantiatedAtRuntime && !guidToObject.ContainsKey(recordedObj.guidString))
                 {
-                    guidToObject.Add(tracked.guidString, tracked.gameObject);
-                    guidMapper.Add(tracked.guidString, tracked.guidString);
+                    guidToObject.Add(recordedObj.guidString, recordedObj.gameObject);
+                    guidMapper.Add(recordedObj.guidString, recordedObj.guidString);
                 }
             }
 
             // Get non-instanced UIs
-            InteractableUI[] trackedUIs = currReplayCollection.GetComponentsInChildren<InteractableUI>(true);
+            InteractableUI[] recordedUIs = currReplayCollection.GetComponentsInChildren<InteractableUI>(true);
 
-            foreach (InteractableUI trackedUI in trackedUIs)
+            foreach (InteractableUI recordedUI in recordedUIs)
             {
-                if (!guidToUI.ContainsKey(trackedUI.guidString))
+                if (!guidToUI.ContainsKey(recordedUI.guidString))
                 {
-                    guidToUI.Add(trackedUI.guidString, trackedUI.gameObject);
+                    guidToUI.Add(recordedUI.guidString, recordedUI.gameObject);
                 }
             }
         }
