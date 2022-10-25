@@ -16,6 +16,8 @@ Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Ro
     6. [Questionnaire](#custom_questionnaire)
     7. [Replay System](#replay_system)
 4. [Example Study](#example)
+5. [Contributors](#contributors)
+6. [Contributing To This Project](#contributing)
 
 
 ## About <a name="about"></a>
@@ -82,7 +84,7 @@ To record the screen using OBS alongside the toolkit, first set up the OBS displ
 
 In order to record the transform information for a GameObject during runtime, you need to add a `Recordable` component to that GameObject. To do so, click on the desired gameobject, then click the `Recordable` button located under `Add RemoteLab component to GameObject`. This will also automatically add the gameobject to the `Recordables` list.
 
-### Recording Component for non-instantiated GameObject <a name="Recording_noninst"></a>
+### Recording Component for non-instantiated GameObject <a name="recording_noninst"></a>
 ![Recordable.cs](docs/imgs/Recordable.png "Recordable Component")
 
 The above picture shows the Recordable component for a non-instantiated GameObject (GameObject not created during runtime using a method call like `Instantiate()`). To finish the setup for a non-instantiated GameObject, select `Generate GUID` in order to generate a GUID for the GameObject. This is a unique ID for the GameObject used during the replay of a recording.
@@ -312,7 +314,7 @@ An example conversion is `Net Physics` script for any objects that need to have 
 This scene contains the converted version of the `[NET] SampleExperiment` scene. In this scene the `[NET] SampleExperiment` scene has been converted following the instruction in the [Replay System](#replay_system) section. This scene additionally removes any Photon script and Net scripts from all object so that the replay system does not fail due to faulty networking in a scene that is not supposed to be networked. It contains the main `Replay System` component in the `Replay Manager` object to handle the replay of recordings. Please follow the Replay System instructions to set up recordings to replay. 
 
 
-# Contributors
+# Contributors <a name="contributors"></a>
 
 Jaewook Lee - University of Washington 
 
@@ -327,7 +329,7 @@ Eyal Ofek - Microsoft Research, Redmond
 November 2020 License Update
 The library of avatars is now released under MIT License.
 
-# Contributing
+# Contributing <a name="contributing"></a>
 
 This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
