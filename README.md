@@ -1,4 +1,4 @@
-Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Rodriguez (UIUC), Eyal Ofek (MSR), Payod Panda (MSR)
+Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Rodriguez (UIUC), Payod Panda (MSR), Eyal Ofek (MSR)
 
 # XR-Remote-Study-Toolkit
 
@@ -22,7 +22,7 @@ Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Ro
 The XR Remote study toolkit is a toolkit for Unity that allows users to record and replay gameplay from the Unity editor window. The toolkit currently allows users to track the changes in Transform for each GameObject in the scene, record UI events (Toggle, Button, and Slider events), note changes in user-defined variables, and implement custom Likert scale surveys and the raw NASA-TLX survey. 
 
 This work was done as a collaboration wetween Microsoft Research and researchers from University of Washington, Vanderbuilt University and UIUC.
-The work is described in a paper (to be) presented at UIST 2022, Bend, Oragon.
+The work is described in a paper presented at UIST 2022, Bend, Oregon.
 
 The reference for the paper is:
 
@@ -310,3 +310,25 @@ An example conversion is `Net Physics` script for any objects that need to have 
 
 ### REPLAY - Sample Experiment
 This scene contains the converted version of the `[NET] SampleExperiment` scene. In this scene the `[NET] SampleExperiment` scene has been converted following the instruction in the [Replay System](#replay_system) section. This scene additionally removes any Photon script and Net scripts from all object so that the replay system does not fail due to faulty networking in a scene that is not supposed to be networked. It contains the main `Replay System` component in the `Replay Manager` object to handle the replay of recordings. Please follow the Replay System instructions to set up recordings to replay. 
+
+
+#Contributors
+Jaewook Lee - University of Washington 
+
+Raahul Natarrajan - Vanderbilt University
+
+Sebastian S. Rodriguez - University of Illinois at Urbana-Champagne
+
+Payod Panda - Microsoft Research, Cambridge
+
+Eyal Ofek - Microsoft Research, Redmond
+
+November 2020 License Update
+The library of avatars is now released under MIT License.
+
+#Contributing
+This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
+
+When you submit a pull request, a CLA bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., status check, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
+
+This project has adopted the Microsoft Open Source Code of Conduct. For more information see the Code of Conduct FAQ or contact opencode@microsoft.com with any additional questions or comments.
