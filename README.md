@@ -51,8 +51,6 @@ Download the latest Unity package from the Releases section. Then, import the pa
 
 First, open the RemoteLab panel by selecting `RemoteLab > Control Panel` from the Unity menu bar. The RemoteLab panel contains useful actions needed to successfully execute a study using RemoteLab's features.
 
-![Replay button](docs/imgs/ReplayButton.png "Replay Button")
-
 To set up the recording system, add the `Replay Manager` prefab by clicking the `Replay` button located under `Add RemoteLab Manager to Scene`. 
 
 ![Replay Manager Component](docs/imgs/ReplayManager.PNG "Replay Manager Component")
