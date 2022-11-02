@@ -1,6 +1,6 @@
 Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Rodriguez (UIUC), Payod Panda (MSR), Eyal Ofek (MSR)
 
-# XR-Remote-Study-Toolkit
+# Remote Lab
 
 ## Table of Contents
 1. [About](#about)
