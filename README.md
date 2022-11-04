@@ -1,5 +1,3 @@
-Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Rodriguez (UIUC), Payod Panda (MSR), Eyal Ofek (MSR)
-
 # Remote Lab
 
 ## Table of Contents
@@ -23,10 +21,13 @@ Contributors: Jaewook Lee (UW), Raahul Natarrajan (Vanderbuilt), Sebastian S. Ro
 ## About <a name="about"></a>
 The XR Remote study toolkit is a toolkit for Unity that allows users to record and replay gameplay from the Unity editor window. The toolkit currently allows users to track the changes in Transform for each GameObject in the scene, record UI events (Toggle, Button, and Slider events), note changes in user-defined variables, and implement custom Likert scale surveys and the raw NASA-TLX survey. 
 
-This work was done as a collaboration wetween Microsoft Research and researchers from University of Washington, Vanderbuilt University and UIUC.
-The work is described in a paper presented at UIST 2022, Bend, Oregon.
+This was a collaborative project between researchers from Microsoft Research (Payod Panda, Eyal Ofek), University of Washington (Jaewook Lee), Vanderbuilt University (Raahul Natarrajan) and UIUC (Sebastian Rodriguez). The work is described in a paper presented at UIST 2022. Please use the following references for citing this work:
 
-The reference for the paper is:
+#### ACM Ref:
+
+Jaewook Lee*, Raahul Natarrajan*, Sebastian S. Rodriguez, Payod Panda, and Eyal Ofek. 2022. RemoteLab: A VR Remote Study Toolkit. In Proceedings of the 35th Annual ACM Symposium on User Interface Software and Technology (UIST '22). Association for Computing Machinery, New York, NY, USA, Article 51, 1–9. https://doi.org/10.1145/3526113.3545679
+
+#### BibTex ref:
 
 ```@inproceedings{lee2022remotelab,
 author = {Lee, Jaewook and Natarrajan, Raahul and Rodriguez, Sebastian S. and Panda, Payod and Ofek, Eyal},
